@@ -5,24 +5,24 @@ const quizQuestions = [
     correctAnswer: "Paris"
   },
   {
-    question: "What is the largest planet in our solar system?",
-    answers: ["Jupiter", "Saturn", "Mars", "Earth"],
-    correctAnswer: "Mars"
+    question: "What is the capital of Canada?",
+    answers: ["Ottawa", "Stockholm", "Zagreb", "Quebec"],
+    correctAnswer: "Ottawa"
   },
   {
-    question: "What is the tallest mountain in the world?",
-    answers: ["Mount Everest", "K2", "Kangchenjunga", "Lhotse"],
-    correctAnswer: "K2"
+    question: "What is the capital of New Zealand?",
+    answers: ["Oslo", "Manila", "Wellington", "Maputo"],
+    correctAnswer: "Wellington"
   },
   {
-    question: "What is the name of the first man to walk on the moon?",
-    answers: ["Neil Armstrong", "Buzz Aldrin", "Michael Collins", "Alan Shepard"],
-    correctAnswer: "BUZZ"
+    question: "WWhat is the capital of Egypt?",
+    answers: ["Quito", "Cairo", "Cape Town", "Suva"],
+    correctAnswer: "Cairo"
   },
   {
-    question: "What is the largest organ in the human body?",
-    answers: ["Skin", "Liver", "Heart", "Lungs"],
-    correctAnswer: 0
+    question: "What is the capital of Albania?",
+    answers: ["Cairo", "Durban", "Quebec", "Tirana"],
+    correctAnswer: "Tirana"
   }
 ];
 
@@ -53,7 +53,8 @@ function startQuiz() {
   // timerInterval = setInterval(updateTimer, 1000);
 }
 
-let time=100
+
+let time= 1000
 function starttimer(){
   document.getElementById('time-remaining').innerHTML='empty'
 let interval=setInterval(function(){
@@ -70,11 +71,13 @@ let interval=setInterval(function(){
 
 
 function setNextQuestion() {
-  resetState();
+  // resetState();
   showQuestion(quizQuestions[currentQuestionIndex]);
 }
 
 function showQuestion(question) {
+  console.log(question)
+  answerButtons.innerHTML=""
   questionContainer.innerText = question.question;
   question.answers.forEach((answer, index) => {
     const button = document.createElement("button");
@@ -82,7 +85,7 @@ function showQuestion(question) {
     button.addEventListener("click", (event) => { 
 event.preventDefault()
 let userchoice=event.target.value;
-if(userchoice===questions[currentQuestionIndex].answer){
+if(userchoice===question.answer){
   currentQuestionIndex=currentQuestionIndex+1;
   setNextQuestion()
 
@@ -93,5 +96,6 @@ if(userchoice===questions[currentQuestionIndex].answer){
 }
       // if )
     })
+  answerButtons.appendChild(button)
   })
 }
